@@ -1,0 +1,6 @@
+name: Your New Jekyll Site
+markdown: redcarpet
+source: source
+plugins: source/_plugins
+destination: site
+pygments: false
