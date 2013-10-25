@@ -1,29 +1,49 @@
 require 'colorator'
 
-has_failed = false
+has_failed  = false
+config      = File.read("_config.yml")
+config_prod = "#{config}env: production"
 
-`bundle exec jekyll build --config _config.yml,_production.yml --trace`
-
-compressed_diff = `diff expected/compressed.html site/index.html`
-
-`bundle exec jekyll build --trace`
-
-uncompressed_diff = `diff expected/uncompressed.html site/index.html`
-
-if compressed_diff.size == 0
-  puts "Compression passed".green
-else
-  puts "Compression failed".red
-  puts compressed_diff
-  has_failed = true
+def test(type, version)
+  build(version)
+  if diff = diff_file(type, version)
+    puts "Jekyll #{version}: Failed #{type}".red
+    puts diff
+    has_failed = true
+  else
+    puts "Jekyll #{version}: Passed #{type}".green
+  end
 end
 
-if uncompressed_diff.size == 0
-  puts "Disabling compression passed".green
-else
-  puts "Disabling compression failed".red
-  puts uncompressed_diff
-  has_failed = true
+def build(version)
+  ENV['BUNDLE_GEMFILE'] = "jekyll-#{version}/Gemfile"
+  build =  "rm -rf site && bundle exec jekyll"
+  build += " build --trace" if version === "1.0"
+  `#{build}`
+end
+
+def diff_file(file, version)
+  diff = `diff jekyll-#{version}/expected/#{file}.html site/index.html`
+  if diff.size > 0
+    diff
+  else
+    false
+  end
+end
+
+test('uncompressed', "1.0")
+test('uncompressed', "0.12")
+
+File.open("_config.yml", "w") do |f|
+  f.write(config_prod) 
+end
+
+test('compressed', "1.0")
+test('compressed', "0.12")
+
+# Reset original config without compression enabled
+File.open("_config.yml", "w") do |f|
+  f.write(config)
 end
 
 abort if has_failed

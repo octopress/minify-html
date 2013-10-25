@@ -21,6 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 
-  spec.add_runtime_dependency "jekyll", "~> 1.0"
+  spec.add_runtime_dependency "jekyll", ">= 0.12"
   spec.add_runtime_dependency "html_press", "~> 0.8.2"
 end

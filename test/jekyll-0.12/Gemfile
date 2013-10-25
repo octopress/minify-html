@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in jekyll-markdown-block.gemspec
 group :jekyll_plugins do
-  gem "jekyll-minify-html", path: "../"
+  gem "jekyll-minify-html", path: "../../"
 end
 
+gem "colorator"
+gem "redcarpet"
+gem "jekyll", "~> 0.12.0"
