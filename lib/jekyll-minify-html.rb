@@ -10,7 +10,9 @@ module Jekyll
     end
 
     def output_html(path, content)
-      if @site.config['env'] && @site.config['env'].downcase === 'production'
+      minify = @site.config['minify_html']
+      production = @site.config['env'].nil? || @site.config['env'] =~ /production/i
+      if minify || (minify.nil? && production)
         content = HtmlPress.press(content)
       end
       output_file(path, content)

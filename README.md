@@ -32,11 +32,20 @@ Or you can just create a ruby file in your Jekyll plugins directory with the lin
 
 ## Usage
 
-Set Jekyll's environment to production in your Jekyll configuration file.
+After installing, Jekyll's HTML output will be minified by default. If you configure `env` in your Jekyll configuration, HTML will be minified only when
+`env` is set to production.
 
 ```yml
 env: production
 ```
+
+You can override the default behavior by setting the `minify_html` config.
+For example, this will disable minification, regardless of your `env` setting.
+
+```yml
+minfy_html: false
+```
+
 
 ## Contributing
 
