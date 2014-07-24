@@ -43,7 +43,7 @@ You can override the default behavior by setting the `minify_html` config.
 For example, this will disable minification, regardless of your `env` setting.
 
 ```yml
-minfy_html: false
+minify_html: false
 ```
 
 
