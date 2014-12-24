@@ -41,6 +41,7 @@ module Jekyll
       end
     end
   end
+
   class ConvertiblePage
     include MinifyHTML
 
@@ -53,5 +54,17 @@ module Jekyll
       end
     end
   end
-end
 
+  class Document
+    include MinifyHTML
+
+    def write(dest)
+      dest_path = destination(dest)
+      if File.extname(dest_path).downcase == '.html'
+        output_html(dest_path, output)
+      else
+        output_file(dest_path, output)
+      end
+    end
+  end
+end
