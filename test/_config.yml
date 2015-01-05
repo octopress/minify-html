@@ -1,8 +1,10 @@
-name: Your New Jekyll Site
 markdown: redcarpet
-redcarpet:
-  smart: false
-source: source
-plugins: source/_plugins
-destination: site
-pygments: false
+highlighter: false
+exclude: 
+  - Gemfile
+gems:
+  - jekyll-minify-html
+collections:
+  collection_test:
+    output: true
+

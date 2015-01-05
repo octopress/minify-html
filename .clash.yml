@@ -1,0 +1,46 @@
+-
+  title: Standard build
+  build: true
+  compare: _expected/compressed _site
+-
+  title: Uncompressed build
+  build: true
+  compare: _expected/uncompressed _site
+  config:
+    jekyll: 
+      - _config.yml
+      - _minify-false.yml
+-
+  title: ENV production build
+  build: true
+  compare: _expected/compressed _site
+  config:
+    jekyll: 
+      - _config.yml
+      - _env-prod.yml
+-
+  title: ENV development build
+  build: true
+  compare: _expected/uncompressed _site
+  config:
+    jekyll: 
+      - _config.yml
+      - _env-dev.yml
+-
+  title: ENV production override build
+  build: true
+  compare: _expected/uncompressed _site
+  config:
+    jekyll: 
+      - _config.yml
+      - _env-prod.yml
+      - _minify-false.yml
+-
+  title: ENV development override build
+  build: true
+  compare: _expected/compressed _site
+  config:
+    jekyll: 
+      - _config.yml
+      - _env-dev.yml
+      - _minify-true.yml
