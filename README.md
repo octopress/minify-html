@@ -8,8 +8,6 @@ Minify Jekyll's HTML output with [html_press](https://github.com/stereobooster/h
 
 ## Installation
 
-## Installation
-
 ### Using Bundler
 
 Add this gem to your site's Gemfile in the `:jekyll_plugins` group:
