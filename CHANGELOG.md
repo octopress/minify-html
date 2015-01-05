@@ -3,6 +3,7 @@
 ### 1.2.0 (2015-01-05)
 
 - Added support for Jekyll collections.
+- Renamed to octopress-minify-html.
 
 ### 1.1.0 (2013-11-02)
 

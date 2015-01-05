@@ -27,7 +27,7 @@ Then install the gem with Bundler
 Then add the gem to your Jekyll configuration.
 
     gems:
-      -octopress-minify-html
+      - octopress-minify-html
 
 ## Usage
 
@@ -44,7 +44,6 @@ For example, this will disable minification, regardless of your `env` setting.
 ```yml
 minify_html: false
 ```
-
 
 ## Contributing
 
