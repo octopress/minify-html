@@ -1,34 +1,35 @@
-# Jekyll Minify Html
+# Octopress Minify Html
 
-[![Gem Version](https://badge.fury.io/rb/jekyll-minify-html.png)](http://badge.fury.io/rb/jekyll-minify-html) [![Build Status](https://travis-ci.org/imathis/jekyll-minify-html.png)](https://travis-ci.org/imathis/jekyll-minify-html)
+[![Gem Version](https://badge.fury.io/rb/octopress-minify-html.png)](http://badge.fury.io/rb/octopress-minify-html)
+[![Build Status](https://travis-ci.org/octopress/minify-html.png)](https://travis-ci.org/octopress/minify-html)
+
 
 Minify Jekyll's HTML output with [html_press](https://github.com/stereobooster/html_press)
 
 ## Installation
 
-Add this line to your application's Gemfile under
-the :jekyll_plugins group:
+## Installation
 
-```ruby
-group :jekyll_plugins do
-  gem 'jekyll-minify-html'
-end
-```
+### Using Bundler
 
-And then execute:
+Add this gem to your site's Gemfile in the `:jekyll_plugins` group:
+
+    group :jekyll_plugins do
+      gem 'octopress-minify-html'
+    end
+
+Then install the gem with Bundler
 
     $ bundle
 
-Next add this to your plugins folder to automatically load any Jekyll plugins in your :jekyll_plugins group.
+### Manual Installation
 
-```ruby
-# in _plugins/bundler.rb
-require "bundler/setup"
-Bundler.require(:jekyll_plugins)
+    $ gem install octopress-minify-html
 
-```
+Then add the gem to your Jekyll configuration.
 
-Or you can just create a ruby file in your Jekyll plugins directory with the line `require "jekyll-minify-html"`
+    gems:
+      -octopress-minify-html
 
 ## Usage
 

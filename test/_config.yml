@@ -2,7 +2,7 @@ highlighter: false
 exclude: 
   - Gemfile
 gems:
-  - jekyll-minify-html
+  - octopress-minify-html
 collections:
   collection_test:
     output: true
