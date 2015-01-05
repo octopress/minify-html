@@ -1,7 +1,4 @@
-markdown: redcarpet
 highlighter: false
-redcarpet:
-  smart: false
 exclude: 
   - Gemfile
 gems:
