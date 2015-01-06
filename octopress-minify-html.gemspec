@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "jekyll", "~> 2.0"
   spec.add_runtime_dependency "html_press", "~> 0.8"
+  spec.add_runtime_dependency "octopress-hooks"
 end

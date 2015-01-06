@@ -1,63 +1,18 @@
 require 'html_press'
+require 'octopress-hooks'
 require 'octopress-minify-html/version'
 
 module Octopress
   module MinifyHTML
-    def self.output_file(dest, content)
-      FileUtils.mkdir_p(File.dirname(dest))
-      File.open(dest, 'w') do |f|
-        f.write(content)
+    class MinifyPage < Hooks::All
+      def post_render(item)
+        item.output = HtmlPress.press(item.output) if minify?(item.site.config)
       end
-    end
 
-    def self.output_html(config, path, content)
-      minify = config['minify_html']
-      production = config['env'].nil? || config['env'] =~ /production/i
-      if minify || (minify.nil? && production)
-        content = HtmlPress.press(content)
-      end
-      output_file(path, content)
-    end
-  end
-end
-
-module Jekyll
-  class Post
-    def write(dest)
-      dest_path = destination(dest)
-      Octopress::MinifyHTML.output_html(@site.config, dest_path, output)
-    end
-  end
-
-  class Page
-    def write(dest)
-      dest_path = destination(dest)
-      if File.extname(dest_path).downcase == '.html'
-        Octopress::MinifyHTML.output_html(@site.config, dest_path, output)
-      else
-        Octopress::MinifyHTML.output_file(@site.config, dest_path, output)
-      end
-    end
-  end
-
-  class ConvertiblePage
-    def write(dest)
-      dest_path = destination(dest)
-      if File.extname(dest_path).downcase == '.html'
-        Octopress::MinifyHTML.output_html(@site.config, dest_path, output)
-      else
-        Octopress::MinifyHTML.output_file(@site.config, dest_path, output)
-      end
-    end
-  end
-
-  class Document
-    def write(dest)
-      dest_path = destination(dest)
-      if File.extname(dest_path).downcase == '.html'
-        Octopress::MinifyHTML.output_html(@site.config, dest_path, output)
-      else
-        Octopress::MinifyHTML.output_file(@site.config, dest_path, output)
+      def minify?(config)
+        minify = config['minify_html']
+        production = config['env'].nil? || config['env'] =~ /production/i
+        minify || (minify.nil? && production)
       end
     end
   end

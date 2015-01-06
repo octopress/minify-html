@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.2.1 (2015-01-05)
+
+- Rewritten on top of Octopress Hooks.
+
 ### 1.2.0 (2015-01-05)
 
 - Added support for Jekyll collections.
