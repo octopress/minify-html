@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.2.2 (2015-02-25)
+
+- Fix: No longer compresses non-HTML pages.
+
 ### 1.2.1 (2015-01-05)
 
 - Rewritten on top of Octopress Hooks.
