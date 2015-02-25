@@ -6,7 +6,7 @@ module Octopress
   module MinifyHTML
     class MinifyPage < Hooks::All
       def post_render(item)
-        item.output = HtmlPress.press(item.output) if minify?(item.site.config)
+        item.output = HtmlPress.press(item.output) if minify?(item.site.config) && item.html?
       end
 
       def minify?(config)
