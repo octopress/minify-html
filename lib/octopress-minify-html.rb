@@ -6,13 +6,19 @@ module Octopress
   module MinifyHTML
     class MinifyPage < Hooks::All
       def post_render(item)
-        item.output = HtmlPress.press(item.output) if minify?(item.site.config) && item.html?
+        item.output = HtmlPress.press(item.output) if minify?(item)
       end
 
-      def minify?(config)
-        minify = config['minify_html']
-        production = config['env'].nil? || config['env'] =~ /production/i
-        minify || (minify.nil? && production)
+      def minify?(item)
+        if item.url.end_with?('html')
+          config = item.site.config
+          minify = config['minify_html']
+          production = config['env'].nil? || config['env'] =~ /production/i
+
+          # Minify if configuration explicitly requires minification
+          # or if Jekyll env is production
+          minify || (minify.nil? && production)
+        end
       end
     end
   end
