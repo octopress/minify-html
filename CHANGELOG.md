@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.2.3 (2015-03-09)
+
+- Fix: Improved method of checking if a page output will be an HTML page.
+
 ### 1.2.2 (2015-02-25)
 
 - Fix: No longer compresses non-HTML pages.

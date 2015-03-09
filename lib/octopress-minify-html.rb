@@ -10,8 +10,8 @@ module Octopress
       end
 
       def minify?(item)
-        if item.url.end_with?('html')
-          config = item.site.config
+        config = item.site.config
+        if item.destination(config['destination']).end_with?('html')
           minify = config['minify_html']
           production = config['env'].nil? || config['env'] =~ /production/i
 
