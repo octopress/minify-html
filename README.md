@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/octopress/minify-html.png)](https://travis-ci.org/octopress/minify-html)
 
 
-Minify Jekyll's HTML output with [html_press](https://github.com/stereobooster/html_press)
+Minify Jekyll's HTML output with [HtmlPress](https://github.com/stereobooster/html_press)
 
 ## Installation
 
@@ -43,6 +43,18 @@ For example, this will disable minification, regardless of your `env` setting.
 
 ```yml
 minify_html: false
+```
+
+## HtmlPress Configuration:
+
+You can set configuration options for [HtmlPress](https://github.com/stereobooster/html_press) in your Jekyll configuration like this:
+
+```
+html_press:
+  unquoted_attributes: false
+  drop_empty_values: false
+  strip_crlf: false
+  js_minifier_options: false
 ```
 
 ## Contributing

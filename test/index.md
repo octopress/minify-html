@@ -20,3 +20,5 @@ OK.
 This is probably good enough.
 
 Peace out.
+
+<foo text=''>

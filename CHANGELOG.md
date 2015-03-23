@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.2.4 (2015-03-23)
+
+- Added `html_press` configuration for setting compression options.
+
 ### 1.2.3 (2015-03-09)
 
 - Fix: Improved method of checking if a page output will be an HTML page.

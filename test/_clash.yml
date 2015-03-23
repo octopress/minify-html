@@ -11,6 +11,14 @@
       - _config.yml
       - _minify-false.yml
 -
+  title: Configure HtmlPress
+  build: true
+  compare: _expected/compressed-configured _site
+  config:
+    jekyll: 
+      - _config.yml
+      - _config_html_press.yml
+-
   title: ENV production build
   build: true
   compare: _expected/compressed _site
