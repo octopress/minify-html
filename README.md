@@ -1,7 +1,7 @@
 # Octopress Minify Html
 
-[![Gem Version](https://badge.fury.io/rb/octopress-minify-html.png)](http://badge.fury.io/rb/octopress-minify-html)
-[![Build Status](https://travis-ci.org/octopress/minify-html.png)](https://travis-ci.org/octopress/minify-html)
+[![Gem Version](https://badge.fury.io/rb/octopress-minify-html.svg)](http://badge.fury.io/rb/octopress-minify-html)
+[![Build Status](https://travis-ci.org/octopress/minify-html.svg)](https://travis-ci.org/octopress/minify-html)
 
 
 Minify Jekyll's HTML output with [HtmlPress](https://github.com/stereobooster/html_press)
