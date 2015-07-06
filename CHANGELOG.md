@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.3.0 (2015-07-07)
+- New: Support for Jekyll 3.
+
 ### 1.2.4 (2015-03-23)
 
 - Added `html_press` configuration for setting compression options.
