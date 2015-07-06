@@ -1,6 +1,5 @@
 require 'html_press'
 
-require 'octopress-hooks'
 require 'octopress-minify-html/version'
 
 module Octopress
