@@ -1,29 +1,34 @@
 require 'html_press'
-require 'octopress-hooks'
+
 require 'octopress-minify-html/version'
 
 module Octopress
   module MinifyHTML
-    class MinifyPage < Hooks::All
-      def post_render(item)
-        options = MinifyHTML.symbolize(item.site.config['html_press'] || {})
-        item.output = HtmlPress.press(item.output, options) if minify?(item)
-      end
 
-      def minify?(item)
-        config = item.site.config
-        if item.destination(config['destination']).end_with?('html')
-          minify = config['minify_html']
-          production = config['env'].nil? || config['env'] =~ /production/i
+    extend self
 
-          # Minify if configuration explicitly requires minification
-          # or if Jekyll env is production
-          minify || (minify.nil? && production)
-        end
+    def minify(item)
+      options = symbolize(item.site.config['html_press'] || {})
+      if minify?(item)
+        HtmlPress.press(item.output, options)
+      else
+        item.output
       end
     end
 
-    def self.symbolize(obj)
+    def minify?(item)
+      config = item.site.config
+      if item.destination(config['destination']).end_with?('html')
+        minify = config['minify_html']
+        production = config['env'].nil? || config['env'] =~ /production/i
+
+        # Minify if configuration explicitly requires minification
+        # or if Jekyll env is production
+        minify || (minify.nil? && production)
+      end
+    end
+
+    def symbolize(obj)
       return obj.reduce({}) do |memo, (k, v)|
         memo.tap { |m| m[k.to_sym] = symbolize(v) }
       end if obj.is_a? Hash
@@ -33,6 +38,19 @@ module Octopress
       end if obj.is_a? Array
       
       obj
+    end
+
+    if defined?(Jekyll::Hooks)
+      Jekyll::Hooks.register [:post, :page, :document], :post_render do |item|
+        item.output = MinifyHTML.minify(item)
+      end
+    else
+      require 'octopress-hooks'
+      class MinifyPage < Octopress::Hooks::All
+        def post_render(item)
+          item.output = MinifyHTML.minify(item)
+        end
+      end
     end
   end
 end
