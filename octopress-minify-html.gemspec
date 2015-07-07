@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "clash"
 
-  spec.add_runtime_dependency "jekyll", ">= 3.0.0.a", "< 4"
+  spec.add_runtime_dependency "jekyll", ">= 2.0"
   spec.add_runtime_dependency "html_press", "~> 0.8"
   spec.add_runtime_dependency "octopress-hooks"
 
