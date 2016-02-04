@@ -41,7 +41,7 @@ module Octopress
     end
 
     if defined?(Jekyll::Hooks)
-      Jekyll::Hooks.register [:post, :page, :document], :post_render do |item|
+      Jekyll::Hooks.register [:posts, :pages, :documents], :post_render do |item|
         item.output = MinifyHTML.minify(item)
       end
     else
