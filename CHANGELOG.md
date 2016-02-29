@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.3.1 (2016-02-04)
+- New: Support for Jekyll 3.1.
+
 ### 1.3.0 (2015-07-07)
 - New: Support for Jekyll 3.
 
